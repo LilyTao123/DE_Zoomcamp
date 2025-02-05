@@ -21,31 +21,3 @@ Create table in Bigquery
 Create staging table in Bigquery
 Add unique row id and file name
 Merge data into main table
-
-
-
-
-2022 
-<!-- What is data lake -->
-Raw, Large, Undefined
-a. ingest structured and unstructured data
-b. stores, secures and protects data at unlimited scale
-c. catalogs and indexes for analysis without data movement
-d. connects data with analytics and machine learning tools
-
-<!-- What is data warehouse -->
-Refined, Smaller, Relational
-
-<!-- ETL vs ELT -->
-a. ETL  ---> datawarehouse solution
-   ELT  ---> data lake solution, based on schema on read
-
-<!-- Gotcha of Data Lake -->
-a. converting into Data Swamp
-b. no versioning 
-c. incompatible schemas for same data without versioning
-d. no metadata associated
-e. joins not possible
-
-Products: 
-GCP --> Cloud storage,   AWS --> S3, Azure --> AZURE BLOB
