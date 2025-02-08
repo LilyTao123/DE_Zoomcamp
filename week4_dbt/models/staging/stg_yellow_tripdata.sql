@@ -42,7 +42,7 @@ select
     coalesce(
         {{ dbt.safe_cast("payment_type", api.Column.translate_type("integer")) }}, 0
     ) as payment_type,
-    {{ get_payment_type_description("payment_type") }} as payment_type_description
+    {{ get_payment_type_description("payment_type") }} as payment_type_descripted
 from tripdata
 where rn = 1
 

@@ -235,6 +235,6 @@ models:
               severity: warn
               quote: false
 
-      - name: payment_type_description
+      - name: payment_type_descripted
         data_type: string
         description: ""

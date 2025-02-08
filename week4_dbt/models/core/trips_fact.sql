@@ -1,13 +1,55 @@
 {{ config(materialized='table')}}
 
 with green_tripdata as (
-    select *,
-    'Green' as service_type
+    select 
+        'Green' as service_type,
+        tripid, 
+        vendorid,
+        ratecodeid, 
+        pickup_locationid, 
+        dropoff_locationid,
+        pickup_datetime, 
+        dropoff_datetime, 
+        store_and_fwd_flag, 
+        passenger_count, 
+        trip_distance, 
+        trip_type, 
+        fare_amount, 
+        extra, 
+        mta_tax, 
+        tip_amount, 
+        tolls_amount, 
+        ehail_fee, 
+        improvement_surcharge, 
+        total_amount, 
+        payment_type, 
+        payment_type_descripted
     from {{ref('stg_green_tripdata')}}
 ),
 yellow_tripdata as (
-    select *,
-    'Yellow' as service_type
+    select 
+        'Yellow' as service_type,
+        tripid, 
+        vendorid,
+        ratecodeid, 
+        pickup_locationid, 
+        dropoff_locationid,
+        pickup_datetime, 
+        dropoff_datetime, 
+        store_and_fwd_flag, 
+        passenger_count, 
+        trip_distance, 
+        trip_type, 
+        fare_amount, 
+        extra, 
+        mta_tax, 
+        tip_amount, 
+        tolls_amount, 
+        ehail_fee, 
+        improvement_surcharge, 
+        total_amount, 
+        payment_type, 
+        payment_type_descripted
     from {{ref('stg_yellow_tripdata')}}
 ),
 trips_unioned as (
@@ -44,9 +86,9 @@ select trips_unioned.tripid,
     trips_unioned.improvement_surcharge, 
     trips_unioned.total_amount, 
     trips_unioned.payment_type, 
-    trips_unioned.payment_type_description
+    trips_unioned.payment_type_descripted
 from trips_unioned
-inner join dim_zones as pickup_zones
-on trips_unioned.pickup_locationid = pickup_zones.locationid
-inner join dim_zones as dropoff_zones
-on trips_unioned.dropoff_locationid = dropoff_zones.locationid
+inner join dim_zones as pickup_zone
+on trips_unioned.pickup_locationid = pickup_zone.locationid
+inner join dim_zones as dropoff_zone
+on trips_unioned.dropoff_locationid = dropoff_zone.locationid
